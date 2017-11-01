@@ -1,5 +1,6 @@
 package com.ljd;
 
+import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,8 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 
 @RestController
+// 将使用@SpringBootApplication的类放在根包下，默认该包以及子包中的类有某些注解会被自动扫描@Entity，@Controller
+// same as @Configuration @EnableAutoConfiguration @ComponentScan
 @SpringBootApplication
-public class Test {
+//@EnableAutoConfiguration
+public class Application {
 
     @RequestMapping("/")
     public String home() {
@@ -25,7 +29,12 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Test.class, args);
+        //默认
+        //SpringApplication.run(Application.class, args);
+        //自定义---在启动的时候将Spring的图像去掉
+        SpringApplication springApplication = new SpringApplication(Application.class);
+        springApplication.setBannerMode(Banner.Mode.OFF);
+        springApplication.run(args);
     }
 
     @Bean
