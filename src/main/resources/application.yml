@@ -1,4 +1,18 @@
 my:
   name: liangjidong
   age: 23
+  number: ${random.int}
+  uuid: ${random.uuid}
+  max: ${random.int(10)}
+  value: ${random.value}
+  greeting: hi,i'm ${my.name}
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.200.101:3306/test
+    username: root
+    password: 111111
+
 
