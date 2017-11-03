@@ -32,7 +32,7 @@ public class AccountDAOImpl implements AccountDAO {
 
     @Override
     public int delete(int id) {
-        String sql = "delete from table account where id=?";
+        String sql = "delete from account where id=?";
         return jdbcTemplate.update(sql, id);
     }
 
